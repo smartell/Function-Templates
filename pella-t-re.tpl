@@ -50,7 +50,6 @@ PARAMETER_SECTION
   init_bounded_number m(1,10.,4)
   init_bounded_vector k_devs(2,nobs,-5.,5.,4)
   //init_bounded_dev_vector effort_devs(1,nobs,-5.,5.,3)
-  init_bounded_number tau(0,1,3);
   random_effects_vector effort_devs(1,nobs,3);
 
   number binit
@@ -89,7 +88,7 @@ PROCEDURE_SECTION
 FUNCTION calculate_fishing_mortality
   // calculate the fishing mortality
   f=q*effort;
-  if (active(effort_devs)) f=elem_prod(f,exp(tau*effort_devs));
+  if (active(effort_devs)) f=elem_prod(f,exp(effort_devs));
 
 FUNCTION calculate_biomass_and_predicted_catch
   // calculate the biomass and predicted catch
@@ -176,6 +175,8 @@ FUNCTION calculate_the_objective_function
    //nll+=1000.*nll_dnorm(log(0.4),log(mean(f)));
   }
   
+REPORT_SECTION
+  report<<biomass<<endl;
 
 GLOBALS_SECTION
     #include <admodel.h>

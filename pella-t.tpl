@@ -172,7 +172,9 @@ FUNCTION calculate_the_objective_function
     ff+=1000.*square(log(mean(f)/.4));
    //nll+=1000.*nll_dnorm(log(0.4),log(mean(f)));
   }
-  
+REPORT_SECTION
+  report<<biomass<<endl;
+ 
 
 GLOBALS_SECTION
     #include <admodel.h>
