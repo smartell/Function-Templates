@@ -20,6 +20,17 @@ dvariable nll_dnorm(T1 tO, T2 tP)
 	return(nloglike);
 }
 
+// This also works; but must cast the call, eg: nll_dnorm<dvariable>(obs,pre)
+template <typename T0,typename T1,typename T2>
+T0 nll_dnorm(T1 tO, T2 tP)
+{
+	int n  = size_count(tO);
+	T0 SS = sum(square(tO-tP));
+	T0 nloglike = 0.5 * n * log(SS);
+	cout<<"Wort of Frog"<<endl;
+	return(nloglike);
+}
+
 // This does now works, note that xxx is never used but required to specify type.
 template <typename T1,typename T2,typename T3>
 T3 nll_dnorm(T1 tO, T2 tP, T3 xxx)
