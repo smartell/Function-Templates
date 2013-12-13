@@ -148,11 +148,12 @@ FUNCTION calculate_the_objective_function
   dvariable nll;
   if (!active(effort_devs))
   {
-    ff=nobs/2.*log(norm2(log(obs_catch)-log(1.e-10+pred_catch)));
+    //ff=nobs/2.*log(norm2(log(obs_catch)-log(1.e-10+pred_catch)));
     //ff=nll_dnorm(log(obs_catch),log(1.e-10+pred_catch),nll);
     //ff=nll_dnorm<dvariable>(log(obs_catch),log(1.e-10+pred_catch));
-    
-    cout<<ff<<endl;
+    ff=nll_dnorm(log(obs_catch),log(1.e-10+pred_catch));
+    //ff=nll_dnorm(log(1.e-10+pred_catch),log(obs_catch));
+    //cout<<ff<<endl;
   }
   else if(!active(k_devs))
   {
