@@ -9,3 +9,5 @@ There are two AD Model Builder Programs here:
 	pella-t-re.tpl
 
 Both programs call the same function template in dnorm.h. 
+
+Many thanks to Dave Fournier for the tip on using AccumulationTraits.
